@@ -59,9 +59,13 @@ int main()
         printf("%d\n", numPaths(rows, cols, p, matrix, numP));
         
 
-       /* char *file = generateRandomFile(&rows, &cols);
-        printf("File generated: %s\n", file);*/
+       char *file = generateRandomFile(&rows, &cols);
+       printf("File generated: %s\n", file);
 
+       
+
+
+      
     
 
 

@@ -89,7 +89,7 @@ int numPaths(int rows, int cols, int **p, int **m, int **numPaths)
                 
                 /*
                 Se estiver na ultima linha da matriz p, pega o valor da direita e soma com o valor da matriz m.
-                Se o valor da direita for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                Se a soma for igual ao elemento p[i][j], soma 1 ao numero de caminhos naquela posicao.
                 */
                 
 
@@ -104,7 +104,7 @@ int numPaths(int rows, int cols, int **p, int **m, int **numPaths)
             {
                 /*
                 Se estiver na ultima coluna da matriz p, pega o valor de baixo e soma com o valor da matriz m.
-                Se o valor de baixo for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                Se a soma for igual ao elemento p[i][j], soma 1 ao numero de caminhos naquela posicao.
                 */
 
                 if(p[i][j] == p[i + 1][j] + m[i][j])
@@ -117,7 +117,7 @@ int numPaths(int rows, int cols, int **p, int **m, int **numPaths)
             { 
                 /*
                 Se estiver em qualquer outra posicao da matriz p, pega o valor da direita e soma com o valor da matriz m.
-                Se o valor da direita for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                Se a soma for igual ao elemento p[i][j], soma 1 ao numero de caminhos naquela posicao.
                 */
 
                 if(p[i][j] == p[i + 1][j] + m[i][j])
@@ -127,7 +127,7 @@ int numPaths(int rows, int cols, int **p, int **m, int **numPaths)
 
                 /*
                 Se estiver em qualquer outra posicao da matriz p, pega o valor de baixo e soma com o valor da matriz m.
-                Se o valor de baixo for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                Se a soma for igual ao elemento p[i][j], soma 1 ao numero de caminhos naquela posicao.
                 */
 
                 if(p[i][j] == p[i][j + 1] + m[i][j])
@@ -142,7 +142,4 @@ int numPaths(int rows, int cols, int **p, int **m, int **numPaths)
     // Retorna o numero de caminhos na posicao [0][0].
     return numPaths[0][0];
 }
-
-
-
 
