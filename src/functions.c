@@ -7,7 +7,7 @@
 
 #include "functions.h"
 
-#define FILEPATH "/tests/random-%d-%d.txt"
+#define FILEPATH "tests/random-%d-%d.txt"
 
 
 
@@ -72,8 +72,8 @@ char *generateRandomFile(int *rows, int *cols)
 {
     srand(time(NULL));
 
-    *rows = rand() % 100;
-    *cols = rand() % 100;
+    *rows = rand() % 10 + 1;
+    *cols = rand() % 10 + 1;
    
 
     printf("\nNumber of rows: %d\n"

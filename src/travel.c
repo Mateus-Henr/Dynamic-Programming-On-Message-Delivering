@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "travel.h"
 
 /*
@@ -56,27 +58,91 @@ void minSum(int xPos, int yPos, int rows, int cols, int **m, int **p)
 /*
  *  Discovers the number of minimal paths.
  *
- *  @param      xPos            current line on the field matrix.
- *  @param      yPos            current column on the field matrix.
+ *  
  *  @param      rows            total number of rows in the matrix.
  *  @param      cols            total number of columns in the matrix.
+ *  @param      m               matrix with the cost of travel for each field(field matrix).
  *  @param      p               matrix with the minimal sum of the costs of the fields from each field to field(n, m), used for the dynamic programming.
+ *  @param      numPaths        matrix with the number of minimal paths from each field to field(n, m).
  *  @return                     the number of minimal paths.
  */
-int numPaths(int xPos, int yPos, int rows, int cols, int **p)
+
+int numPaths(int rows, int cols, int **p, int **m, int **numPaths)
 {
-    if (xPos == rows - 1 && yPos == cols - 1) return 1;
-    else
+    // No ultimo campo, o numero de caminhos é 1.
+    numPaths[rows - 1][cols - 1] = 1;
+
+    // Percorre a matriz de baixo para cima e da direita para a esquerda.
+    for(int i = rows - 1; i >= 0; i--)
     {
-        int num = 0;
-        if(xPos != rows - 1 && p[xPos + 1][yPos] < p[xPos][yPos])
+        for(int j = cols - 1; j >= 0; j--)
         {
-            num += numPaths(xPos + 1, yPos, rows, cols, p);
+            
+            if(i == rows - 1 && j == cols - 1) 
+            {
+                //If we are on the last field, we don't need to do anything.
+                continue;
+            }
+
+            else if(i == rows - 1)
+            {
+                
+                /*
+                Se estiver na ultima linha da matriz p, pega o valor da direita e soma com o valor da matriz m.
+                Se o valor da direita for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                */
+                
+
+                if(p[i][j] == p[i][j + 1] + m[i][j])
+                {
+                    numPaths[i][j] = numPaths[i][j + 1];
+                }
+            }
+
+
+            else if(j == cols - 1)
+            {
+                /*
+                Se estiver na ultima coluna da matriz p, pega o valor de baixo e soma com o valor da matriz m.
+                Se o valor de baixo for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                */
+
+                if(p[i][j] == p[i + 1][j] + m[i][j])
+                {
+                    numPaths[i][j] = numPaths[i + 1][j];
+                }
+            }
+           
+            else
+            { 
+                /*
+                Se estiver em qualquer outra posicao da matriz p, pega o valor da direita e soma com o valor da matriz m.
+                Se o valor da direita for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                */
+
+                if(p[i][j] == p[i + 1][j] + m[i][j])
+                {
+                    numPaths[i][j] += numPaths[i + 1][j];
+                }
+
+                /*
+                Se estiver em qualquer outra posicao da matriz p, pega o valor de baixo e soma com o valor da matriz m.
+                Se o valor de baixo for igual ao valor da matriz m, soma 1 ao numero de caminhos naquela posicao p[i][j].
+                */
+
+                if(p[i][j] == p[i][j + 1] + m[i][j])
+                {   
+
+                    numPaths[i][j] += numPaths[i][j + 1];
+                }
+            }
         }
-        if(yPos != cols - 1 && p[xPos][yPos + 1] < p[xPos][yPos])
-        {
-            num += numPaths(xPos, yPos + 1, rows, cols, p);
-        }
-        return num;
     }
+    
+    // Retorna o numero de caminhos na posicao [0][0].
+    return numPaths[0][0];
 }
+
+
+
+

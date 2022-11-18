@@ -20,6 +20,7 @@ int main()
         int rows = 0, cols = 0;
         int **matrix = NULL;
         int **p = NULL;
+        int **numP = NULL;
 
        
         printf("Type the filepath: ");
@@ -36,26 +37,33 @@ int main()
             break;
         }
 
-        for (int i = 0; i < rows; i++)
+       /* for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
             {
                 printf("%d ", matrix[i][j]);
             }
             printf("\n");
-        }
+        }*/
 
         p = initializeMatrix(rows, cols);
-
+        
+        printf("\nSoma Minima: \n");
         minSum(rows - 1, cols - 1, rows, cols, matrix, p);
         printf("%d\n", p[0][0]);
-    
-        printf("%d\n", numPaths(0, 0, rows, cols, p));
 
-        char *file = generateRandomFile(&rows, &cols);
-        printf("File generated: %s\n", file);
 
+        numP = initializeMatrix(rows, cols);
+
+        printf("\nNumero de caminhos minimos: \n");
+        printf("%d\n", numPaths(rows, cols, p, matrix, numP));
         
+
+       /* char *file = generateRandomFile(&rows, &cols);
+        printf("File generated: %s\n", file);*/
+
+    
+
 
 
     return 0;

@@ -32,5 +32,7 @@ int main ()
     printf("%d", p[0][0]);
     
     printf("%d\n", numPaths(0, 0, 3, 3, p));
+    char *filename [100];
+    filename = generateRandomFile(
     return 0;
 }
