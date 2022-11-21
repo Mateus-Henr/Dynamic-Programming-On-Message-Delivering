@@ -1,38 +1,88 @@
 #include <stdio.h>
-#include <graphics.h>
-#include <math.h>
-
 #include <stdlib.h>
+#include <limits.h>
+#include <stdbool.h>
 #include "travel.h"
+#include "file.h"
 
 
-int main ()
+// Function prototype.
+
+void clearConsole();
+
+
+int main()
 {
-    // ESSA MAIN EH COMPLETAMENTE E SOMENTE PARA UM TESTE, PODE APAGAR TUDO SEM MEDO
-    int **matrix;
-    int **p;
-    matrix = (int**) malloc(sizeof(int*) * 3);
-    for (int i = 0; i < 3; i++) matrix[i] = (int*) calloc(3, sizeof(int));
-    p = (int**) malloc(sizeof(int*) * 3);
-    for (int i = 0; i < 3; i++) p[i] = (int*) calloc(3, sizeof(int));
-    int matrix1[3][3] = {
-        {1, 3,1},
-        {1, 5,1},
-        {4, 2,1}
-    };
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            matrix[i][j] = matrix1[i][j];
-        }
-    }
+    clearConsole();
+    printf("Welcome!\n");
 
-    minSum(2, 2, 3, 3, matrix, p);
-    printf("%d", p[0][0]);
-    
-    printf("%d\n", numPaths(0, 0, 3, 3, p));
-    char *filename [100];
-    filename = generateRandomFile(
-    return 0;
+    while (true)
+    {
+        char userFilepath[CHAR_MAX];
+        int rows = 0, cols = 0;
+        int **matrix = NULL;
+        int **p = NULL;
+        int **numP = NULL;
+
+        printf("Type the filepath: ");
+        scanf("%s", userFilepath);
+        flushIn();
+
+        matrix = readFileIntoMatrix(userFilepath, &rows, &cols);
+
+        if (!matrix)
+        {
+            printf("Press ENTER to continue.\n");
+            getchar();
+            clearConsole();
+            continue;
+        }
+
+        p = initializeMatrix(rows, cols);
+
+        printf("\nSoma Minima: \n");
+        minSum(rows - 1, cols - 1, rows, cols, matrix, p);
+        printf("%d\n", p[0][0]);
+
+
+        numP = initializeMatrix(rows, cols);
+
+        printf("\nNumero de caminhos minimos: \n");
+        printf("%d\n", numPaths(rows, cols, p, matrix, numP));
+
+
+        char *file = generateRandomFile(&rows, &cols);
+        printf("File generated: %s\n", file);
+
+        return 0;
+    }
+}
+
+
+/*
+ *  Clears the input buffer.
+ */
+void flushIn()
+{
+    int ch;
+
+    do
+    {
+        ch = fgetc(stdin);
+    } while (ch != EOF && ch != '\n');
+}
+
+
+/*
+ *  Clears console based on user's OS.
+ */
+void clearConsole()
+{
+#ifdef _WIN32
+    system("cls");
+
+#else
+    system("clear");
+
+#endif
 }

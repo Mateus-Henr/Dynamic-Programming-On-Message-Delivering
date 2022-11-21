@@ -3,12 +3,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include "matrix.h"
 
-
-#include "functions.h"
+#include "file.h"
 
 #define FILEPATH "tests/random-%d-%d.txt"
-
 
 
 /*
@@ -19,7 +18,7 @@
  *  @param     cols         pointer to an integer that will store the number of columns in the matrix.
  *  @return                 pointer to initialized matrix.
  */
-  
+
 int **readFileIntoMatrix(char *filepath, int *rows, int *cols)
 {
     FILE *file = fopen(filepath, "r");
@@ -74,7 +73,7 @@ char *generateRandomFile(int *rows, int *cols)
 
     *rows = rand() % 20 + 1;
     *cols = rand() % 20 + 1;
-   
+
 
     printf("\nNumber of rows: %d\n"
            "Number of columns: %d\n", *rows, *cols);
@@ -108,37 +107,4 @@ char *generateRandomFile(int *rows, int *cols)
     file = NULL;
 
     return filepath;
-}
-
-int **initializeMatrix(int rows, int cols)
-{
-    int **matrix = (int **) malloc(rows * sizeof(int *));
-
-    if (!matrix)
-    {
-        return NULL;
-    }
-
-    for (int i = 0; i < rows; i++)
-    {
-        matrix[i] = (int *) calloc(cols, sizeof(int));
-    }
-
-    return matrix;
-}
-
-
-
-
-/*
- *  Clears the input buffer.
- */
-void flushIn()
-{
-    int ch;
-
-    do
-    {
-        ch = fgetc(stdin);
-    } while (ch != EOF && ch != '\n');
 }

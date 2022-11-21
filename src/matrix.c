@@ -1,0 +1,1 @@
+int **initializeMatrix(int rows, int cols);
