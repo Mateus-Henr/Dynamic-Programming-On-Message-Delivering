@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 
+
 /*
  *  Initializes a matrix with a given number of columns and lines.
  *

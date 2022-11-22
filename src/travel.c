@@ -48,7 +48,7 @@ void minSum(int xPos, int yPos, int rows, int cols, int **m, int **p)
     {
         minSum(xPos, yPos - 1, rows, cols, m, p);
     }
-    else if (yPos == 0 && xPos != 0)
+    else if (xPos != 0)
     {
         minSum(xPos - 1, yPos, rows, cols, m, p);
     }

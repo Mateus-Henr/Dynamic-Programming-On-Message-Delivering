@@ -40,19 +40,20 @@ int main()
 
         p = initializeMatrix(rows, cols);
 
-        printf("\nSoma Minima: \n");
+        printf("\nSoma Mínima: ");
         minSum(rows - 1, cols - 1, rows, cols, matrix, p);
         printf("%d\n", p[0][0]);
 
 
         numP = initializeMatrix(rows, cols);
 
-        printf("\nNumero de caminhos minimos: \n");
+        printf("\nQuantidade de Caminhos: ");
         printf("%d\n", numPaths(rows, cols, p, matrix, numP));
 
 
         char *file = generateRandomFile(&rows, &cols);
-        printf("File generated: %s\n", file);
+
+        printf("File gerado em: %s\n", file);
 
         return 0;
     }
