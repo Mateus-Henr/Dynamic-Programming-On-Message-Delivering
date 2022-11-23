@@ -51,7 +51,7 @@ int main()
                 p = initializeMatrix(rows, cols);
 
                 printf("\nMinimum sum: ");
-                minSum(rows-1, cols-1, rows, cols, matrix, p);
+                minSum(rows, cols, matrix, p);
                 printf("%d\n", p[0][0]);
 
                 printf("\nPossible paths:\n");
@@ -87,7 +87,7 @@ int main()
                 p = initializeMatrix(rows, cols);
 
                 printf("\nMinimum sum: ");
-                minSum(rows-1, cols-1, rows, cols, matrix, p);
+                minSum(rows, cols, matrix, p);
                 printf("%d\n", p[0][0]);
 
                 printf("\nPossible paths:\n");
@@ -145,7 +145,7 @@ int main()
         p = initializeMatrix(rows, cols);
 
         printf("\nSoma Mínima: ");
-        minSum(rows - 1, cols - 1, rows, cols, matrix, p);
+        minSum(rows, cols, matrix, p);
         printf("%d\n", p[0][0]);
 
 
