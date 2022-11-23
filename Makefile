@@ -1,5 +1,5 @@
 all:
-	gcc -o main src/functions.c src/travel.c src/test.c
+	gcc -o main src/file.c src/matrix.c src/travel.c src/main.c
 	./main
 
 clean:
