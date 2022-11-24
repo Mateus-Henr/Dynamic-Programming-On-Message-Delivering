@@ -11,74 +11,82 @@
 void clearConsole();
 
 
-int main()
+long int main()
 {
     clearConsole();
-    printf("Welcome!\n");
-
     while (true)
     {
         char userFilepath[CHAR_MAX];
         char generatedFilepath[CHAR_MAX];
-        int rows = 0, cols = 0;
-        int **matrix = NULL;
-        int **p = NULL;
-        int **numP = NULL;
-        int option = 0;
+        long int rows = 0, cols = 0;
+        long int **matrix = NULL;
+        long int **p = NULL;
+        long int **numP = NULL;
+        long int option = 0;
+        long int range = 0;
 
-        printf("Welcome to minimum cost path finder!\n");
+        printf("Welcome to minimum cost path finder!\n\n");
         printf("1 - Enter file path\n");
         printf("2 - Generate random matrix\n");
-        printf("3 - Exit\n");
-        printf("Enter option: ");
-        scanf("%d", &option);
+        printf("3 - Define parameters before generating random matrix\n");
+        printf("4 - Exit\n");
+        printf("\nEnter option: ");
+        scanf("%ld", &option);
         flushIn();
 
         switch (option)
         {
             case 1:
+                clearConsole();
+                printf("Enter file path: ");
                 scanf("%s", userFilepath);
                 flushIn();
                 matrix = readFileIntoMatrix(userFilepath, &rows, &cols);
                 if (!matrix)
                 {
-                    printf("Press any ENTER to continue...");
+                    printf("Press ENTER to continue ");
                     getchar();
                     clearConsole();
                     break;
                 }
 
+                
+
                 p = initializeMatrix(rows, cols);
 
                 printf("\nMinimum sum: ");
                 minSum(rows, cols, matrix, p);
-                printf("%d\n", p[0][0]);
+                printf("%ld\n", p[0][0]);
 
-                printf("\nPossible paths:\n");
+                printf("\nPossible paths: ");
                 numP = initializeMatrix(rows, cols);
                 numPaths(rows, cols, p, matrix, numP);
-                printf("%d\n", numP[0][0]);
-            
-                printf("\nPress any ENTER to continue...");
+                printf("%ld\n", numP[0][0]);
+
+                printf("\nPress ENTER to continue ");
                 getchar();
                 clearConsole();
                 break;
+
             case 2:
                 clearConsole();
-                printf("Generating random matrix...\n");
+                printf("Generating random matrix, please wait \n");
                 char *generatedFilepath = generateRandomFile(&rows, &cols);
 
                 if(!generatedFilepath)
                 {
                     printf("Could not generate file.\n");
+                    printf("Press ENTER to continue ");
+                    getchar();
+                    clearConsole();
                     break;
                 }
-
+                
                 matrix = readFileIntoMatrix(generatedFilepath, &rows, &cols);
 
                 if (!matrix)
                 {
-                    printf("Press any ENTER to continue...");
+                    printf("Press ENTER to continue ");
                     getchar();
                     clearConsole();
                     break;
@@ -88,23 +96,78 @@ int main()
 
                 printf("\nMinimum sum: ");
                 minSum(rows, cols, matrix, p);
-                printf("%d\n", p[0][0]);
+                printf("%ld\n", p[0][0]);
 
-                printf("\nPossible paths:\n");
+                printf("\nPossible paths: ");
                 numP = initializeMatrix(rows, cols);
                 numPaths(rows, cols, p, matrix, numP);
-                printf("%d\n", numP[0][0]);
+                printf("%ld\n", numP[0][0]);
 
-                printf("\nPress any ENTER to continue...");
+                printf("\nPress ENTER to continue ");
                 getchar();
                 clearConsole();
                 break;
+
             case 3:
-                printf("Goodbye!\n");
+                
+                clearConsole();
+                printf("Enter number of rows: ");
+                scanf("%ld", &rows);
+                flushIn();
+                printf("Enter number of columns: ");
+                scanf("%ld", &cols);
+                flushIn();
+                printf("Enter range of values: ");
+                scanf("%ld", &range);
+                flushIn();
+                printf("Generating random matrix, please wait \n");
+                generatedFilepath = generateRandomFileWithInput(&rows, &cols, &range);
+
+                if(!generatedFilepath)
+                {
+                    printf("Could not generate file.\n");
+                    printf("Press ENTER to continue ");
+                    getchar();
+                    clearConsole();
+                    break;
+                }
+
+                 matrix = readFileIntoMatrix(generatedFilepath, &rows, &cols);
+
+                if (!matrix)
+                {
+                    printf("Press ENTER to continue ");
+                    getchar();
+                    clearConsole();
+                    break;
+                }
+
+                p = initializeMatrix(rows, cols);
+
+                printf("\nMinimum sum: ");
+                minSum(rows, cols, matrix, p);
+                printf("%ld\n", p[0][0]);
+
+                printf("\nPossible paths: ");
+                numP = initializeMatrix(rows, cols);
+                numPaths(rows, cols, p, matrix, numP);
+                printf("%ld\n", numP[0][0]);
+
+                printf("\nPress ENTER to continue ");
+                getchar();
+                clearConsole();
+                break;
+
+            case 4:
+                
+                printf("Goodbye my friend!\n");
                 return 0;
+
+
+
             default:
                 printf("Invalid option.\n");
-                printf("Press any ENTER to continue...");
+                printf("Press ENTER to continue ");
                 getchar();
                 clearConsole();
                 break;
@@ -146,13 +209,13 @@ int main()
 
         printf("\nSoma Mínima: ");
         minSum(rows, cols, matrix, p);
-        printf("%d\n", p[0][0]);
+        printf("%ld\n", p[0][0]);
 
 
         numP = initializeMatrix(rows, cols);
 
         printf("\nQuantidade de Caminhos: "); 
-        printf("%d\n", numPaths(rows, cols, p, matrix, numP));
+        printf("%ld\n", numPaths(rows, cols, p, matrix, numP));
 
 
         char *file = generateRandomFile(&rows, &cols);
@@ -169,7 +232,7 @@ int main()
  */
 void flushIn()
 {
-    int ch;
+    long int ch;
 
     do
     {

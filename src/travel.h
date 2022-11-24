@@ -2,6 +2,8 @@
 #define TP_02_F_H
 #endif
 
-void minSum(int rows, int cols, int **m, int **p);
+void minSum(long int rows, long int cols, long int **m, long int **p);
 
-int numPaths(int rows, int cols, int **p, int **m, int **numPaths);
+long int numPaths(long int rows, long int cols, long int **p, long int **m, long int **numPaths);
+
+
