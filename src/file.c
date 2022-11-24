@@ -71,8 +71,8 @@ char *generateRandomFile(int *rows, int *cols)
 {
     srand(time(NULL));
 
-    *rows = rand() % 20 + 1;
-    *cols = rand() % 20 + 1;
+    *rows = rand() % 100 + 1;
+    *cols = rand() % 100 + 1;
 
 
     printf("\nNumber of rows: %d\n"

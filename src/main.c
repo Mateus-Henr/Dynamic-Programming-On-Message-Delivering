@@ -42,7 +42,7 @@ int main()
                 matrix = readFileIntoMatrix(userFilepath, &rows, &cols);
                 if (!matrix)
                 {
-                    printf("Press any ENTER to continue...");
+                    printf("Press any key to continue...");
                     getchar();
                     clearConsole();
                     break;
@@ -59,7 +59,7 @@ int main()
                 numPaths(rows, cols, p, matrix, numP);
                 printf("%d\n", numP[0][0]);
             
-                printf("\nPress any ENTER to continue...");
+                printf("\nPress any key to continue...");
                 getchar();
                 clearConsole();
                 break;
@@ -78,7 +78,7 @@ int main()
 
                 if (!matrix)
                 {
-                    printf("Press any ENTER to continue...");
+                    printf("Press any key to continue...");
                     getchar();
                     clearConsole();
                     break;
@@ -95,7 +95,7 @@ int main()
                 numPaths(rows, cols, p, matrix, numP);
                 printf("%d\n", numP[0][0]);
 
-                printf("\nPress any ENTER to continue...");
+                printf("\nPress any key to continue...");
                 getchar();
                 clearConsole();
                 break;
@@ -104,7 +104,7 @@ int main()
                 return 0;
             default:
                 printf("Invalid option.\n");
-                printf("Press any ENTER to continue...");
+                printf("Press any key to continue...");
                 getchar();
                 clearConsole();
                 break;
