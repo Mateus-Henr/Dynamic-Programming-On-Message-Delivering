@@ -6,11 +6,11 @@
  *
  *  @param     rows       number of rows in the matrix.
  *  @param     cols       number of columns in the matrix.
- *  @return               polong inter to initialized matrix.
+ *  @return               polong long inter to initialized matrix.
  */
-long int **initializeMatrix(long int rows, long int cols)
+long long int **initializeMatrix(long long int rows, long long int cols)
 {
-    long int **matrix = (long int **) malloc(rows * sizeof(long int *));
+    long long int **matrix = (long long int **) malloc(rows * sizeof(long long int *));
 
     if (!matrix)
     {
@@ -18,9 +18,9 @@ long int **initializeMatrix(long int rows, long int cols)
         return NULL;
     }
 
-    for (long int i = 0; i < rows; i++)
+    for (long long int i = 0; i < rows; i++)
     {
-        matrix[i] = (long int *) calloc(cols, sizeof(long int));
+        matrix[i] = (long long int *) calloc(cols, sizeof(long long int));
     }
 
     return matrix;

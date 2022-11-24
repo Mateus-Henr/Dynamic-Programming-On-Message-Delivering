@@ -2,4 +2,4 @@
 #define TP02_MATRIX_H
 #endif
 
-long int **initializeMatrix(long int rows, long int cols);
+long long int **initializeMatrix(long long int rows, long long int cols);

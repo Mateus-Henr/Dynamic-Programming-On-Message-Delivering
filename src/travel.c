@@ -11,12 +11,12 @@
  *  @param      p               matrix with the minimal sum of the costs of the fields from each field to field(n, m), used for the dynamic programming.
  */
 
-void minSum(long int rows, long int cols, long int **m, long int **p)
+void minSum(long long int rows, long long int cols, long long int **m, long long int **p)
 {
-    long int xCount = rows - 1;
-    long int yCount = cols - 1;
-    long int xPos = xCount;
-    long int yPos = yCount;
+    long long int xCount = rows - 1;
+    long long int yCount = cols - 1;
+    long long int xPos = xCount;
+    long long int yPos = yCount;
     while (yCount != -1)
     {
         if (xPos == rows - 1 && yPos == cols - 1)
@@ -89,15 +89,15 @@ void minSum(long int rows, long int cols, long int **m, long int **p)
  *  @return                     the number of minimal paths.
  */
 
-long int numPaths(long int rows, long int cols, long int **p, long int **m, long int **numPaths)
+long long int numPaths(long long int rows, long long int cols, long long int **p, long long int **m,  long long int **numPaths)
 {
     // No último campo, o número de caminhos é 1.
     numPaths[rows - 1][cols - 1] = 1;
 
     // Percorre a matriz de baixo para cima e da direita para a esquerda.
-    for (long int i = rows - 1; i >= 0; i--)
+    for (long long int i = rows - 1; i >= 0; i--)
     {
-        for (long int j = cols - 1; j >= 0; j--)
+        for (long long int j = cols - 1; j >= 0; j--)
         {
 
             if (i == rows - 1 && j == cols - 1)
