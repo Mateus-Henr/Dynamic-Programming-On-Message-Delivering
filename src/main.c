@@ -176,57 +176,6 @@ long int main()
 }
 
 
-
-
-
-                
-              
-
-            
-                
-
-
-            
-
-
-
-                
-
-
-
-/*
-        matrix = readFileIntoMatrix(userFilepath, &rows, &cols);
-
-        if (!matrix)
-        {
-            printf("Press ENTER to continue.\n");
-            getchar();
-            clearConsole();
-            continue;
-        }
-
-        p = initializeMatrix(rows, cols);
-
-        printf("\nSoma Mínima: ");
-        minSum(rows, cols, matrix, p);
-        printf("%ld\n", p[0][0]);
-
-
-        numP = initializeMatrix(rows, cols);
-
-        printf("\nQuantidade de Caminhos: "); 
-        printf("%ld\n", numPaths(rows, cols, p, matrix, numP));
-
-
-        char *file = generateRandomFile(&rows, &cols);
-
-        printf("File gerado em: %s\n", file);
-
-        return 0;
-    }
-}*/
-
-
 /*
  *  Clears the input buffer.
  */

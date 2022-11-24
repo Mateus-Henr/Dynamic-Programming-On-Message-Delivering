@@ -1,5 +1,6 @@
-#include "travel.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include "travel.h"
 
 /*
  *  Discovers the minimal sum of the costs of the fields from field(0, 0) to field(n, m).
