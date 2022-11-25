@@ -29,16 +29,19 @@ void minSum(long long int rows, long long int cols, long long int **m, long long
             {
                 p[xPos][yPos] = m[xPos][yPos] + p[xPos][yPos + 1];
             }
+            
             else if (yPos == cols - 1)
             {
                 p[xPos][yPos] = m[xPos][yPos] + p[xPos + 1][yPos];
             }
+            
             else
             {
                 if (p[xPos][yPos + 1] <= p[xPos + 1][yPos])
                 {
                     p[xPos][yPos] = m[xPos][yPos] + p[xPos][yPos + 1];
                 }
+                
                 else
                 {
                     p[xPos][yPos] = m[xPos][yPos] + p[xPos + 1][yPos];
@@ -160,3 +163,8 @@ long long int numPaths(long long int rows, long long int cols, long long int **p
     // Retorna o número de caminhos na posição [0][0].
     return numPaths[0][0];
 }
+
+
+
+
+

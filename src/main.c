@@ -5,11 +5,14 @@
 #include <time.h>
 #include "travel.h"
 #include "file.h"
+#include "matrix.h"
 
 
 // Function prototype.
 
 void clearConsole();
+
+void flushIn();
 
 
 long long int main()
@@ -24,6 +27,7 @@ long long int main()
         long long int **matrix = NULL;
         long long int **p = NULL;
         long long int **numP = NULL;
+        long long int **numM = NULL;
         long long int option = 0;
         long long int range = 0;
         clock_t start, end;
@@ -84,6 +88,16 @@ long long int main()
                  
                 printf("\nTime spent: %fs\n", (double)(end - start) / CLOCKS_PER_SEC);
 
+               
+
+
+
+
+            
+
+
+                
+
 
                 printf("\nPress ENTER to continue ");
                 getchar();
@@ -124,7 +138,7 @@ long long int main()
                 printf("\nPossible paths: ");
                 numP = initializeMatrix(rows, cols);
                 numPaths(rows, cols, p, matrix, numP);
-                if (numP[0][0] == 0)
+                if (numP[0][0] <= 0)
                 {
                     printf("\nClose to infinity!");
                 }
@@ -189,7 +203,7 @@ long long int main()
                 printf("\nPossible paths: ");
                 numP = initializeMatrix(rows, cols);
                 numPaths(rows, cols, p, matrix, numP);
-                if (numP[0][0] == 0)
+                if (numP[0][0] <= 0)
                 {
                     printf("Close to infinity!\n");
                 }
