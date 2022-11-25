@@ -4,7 +4,6 @@
 #include <time.h>
 #include <string.h>
 #include "matrix.h"
-
 #include "file.h"
 
 #define FILEPATH "tests/random-%lld-%lld.txt"
@@ -67,6 +66,7 @@ long long int **readFileIntoMatrix(char *filepath, long long int *rows, long lon
  *  @param     cols         pointer to an integer that will store the number of columns in the matrix.
  *  @return                 the path to the file.
  */
+
 char *generateRandomFile(long long int *rows, long long int *cols)
 {
     srand(time(NULL));
@@ -92,12 +92,7 @@ char *generateRandomFile(long long int *rows, long long int *cols)
     sprintf(filepath, FILEPATH, *rows, *cols);
     printf("Filepath: %s\n\n", filepath);          
     
-
-    
-    
-
     FILE *file = fopen(filepath, "w");
-    
 
     if (!file)
     {
