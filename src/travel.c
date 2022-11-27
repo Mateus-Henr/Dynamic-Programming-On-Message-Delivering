@@ -389,8 +389,6 @@ void printCoordinates(long long int rows, long long int cols, long long int **p)
 {
     long long int xPos = 0;
     long long int yPos = 0;
-    long long int xCount = 0;
-    long long int yCount = 0;
     while (xPos != rows - 1 || yPos != cols - 1)
     {
         if (xPos == rows - 1)
@@ -435,8 +433,6 @@ void colorPath(long long int rows, long long int cols, long long int **p, long l
 {
     long long int xPos = 0;
     long long int yPos = 0;
-    long long int xCount = 0;
-    long long int yCount = 0;
 
     for (long long int i = 0; i < rows; i++)
     {

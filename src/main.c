@@ -15,21 +15,18 @@ void clearConsole();
 void flushIn();
 
 
-long long int main()
+int main()
 {
     clearConsole();
     while (true)
     {
 
         char userFilepath[CHAR_MAX];
-        char generatedFilepath[CHAR_MAX];
         long long int rows = 0, cols = 0;
         long long int **matrix = NULL;
         long long int **p = NULL;
-        long long int **pDiag = NULL;
         long long int **numP = NULL;
         long long int **numPD = NULL;
-        long long int **numM = NULL;
         long long int **maxP = NULL;
         long long int **minPD = NULL;
         long long int **colorMatrix = NULL;
@@ -37,7 +34,6 @@ long long int main()
         long long int option2 = 0;
         long long int range = 0;
         clock_t start, end;
-        double time = 0.0;
         
 
         printf("Welcome!\n\n");
